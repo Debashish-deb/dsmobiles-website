@@ -1,0 +1,179 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+#main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#main-nav a:hover, #main-nav a.active {
+    background-color: #3498db;
+}
+
+/* Main content styles */
+main {
+    padding: 2rem 0;
+}
+
+#hero {
+    text-align: center;
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+#hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#features {
+    margin-bottom: 3rem;
+}
+
+#features h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature-card h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+/* Contact page styles */
+#contact-form {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+#contact-form h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#contact-info {
+    text-align: center;
+}
+
+#info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.info-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0;
+}
