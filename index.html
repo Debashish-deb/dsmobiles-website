@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSMobiles - Premium Mobile Solutions</title>
+    <meta name="description" content="DSMobiles - Premium Mobile Solutions. Your trusted partner for high-quality mobile devices and accessories.">
+    <meta name="keywords" content="DSMobiles, Mobile Phones, Accessories, Mobile Solutions">
+    <meta name="author" content="DSMobiles">
+    <meta property="og:title" content="DSMobiles - Premium Mobile Solutions">
+    <meta property="og:description" content="Your trusted partner for high-quality mobile devices and accessories.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dsmobiles.com/">
+    <meta property="og:image" content="https://dsmobiles.com/images/og-image.jpg">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>DSMobiles - Premium Mobile Solutions</title>
 </head>
 <body>
-    <header>
+    <header role="banner">
         <div class="container">
             <h1 id="company-name">DSMobiles</h1>
-            <nav id="main-nav">
+            <nav id="main-nav" aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -19,27 +28,27 @@
         </div>
     </header>
 
-    <main class="container">
-        <section id="hero">
-            <h2>Premium Mobile Solutions</h2>
+    <main class="container" role="main">
+        <section id="hero" aria-labelledby="hero-title">
+            <h2 id="hero-title">Premium Mobile Solutions</h2>
             <p>Your trusted partner for high-quality mobile devices and accessories</p>
-            <button id="cta-button">Explore Now</button>
+            <button id="cta-button" aria-label="Explore our mobile solutions">Explore Now</button>
         </section>
 
-        <section id="features">
-            <h3>Why Choose DSMobiles?</h3>
+        <section id="features" aria-labelledby="features-heading">
+            <h3 id="features-heading">Why Choose DSMobiles?</h3>
             <div class="features-grid" id="features-container">
-                <!-- Features will be added by JavaScript -->
+                <!-- Features will be dynamically injected -->
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; <span id="current-year"></span> DSMobiles. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

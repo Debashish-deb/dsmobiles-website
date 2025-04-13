@@ -1,3 +1,15 @@
+/* Root variables */
+:root {
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --secondary-color: #2c3e50;
+    --background-light: #f8f9fa;
+    --text-color: #333;
+    --accent-success: #4CAF50;
+    --accent-error: #F44336;
+    --accent-info: #2196F3;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -8,7 +20,8 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-color);
+    background: #fff;
 }
 
 .container {
@@ -20,7 +33,7 @@ body {
 
 /* Header styles */
 header {
-    background-color: #2c3e50;
+    background-color: var(--secondary-color);
     color: white;
     padding: 1rem 0;
 }
@@ -46,7 +59,7 @@ header .container {
 }
 
 #main-nav a:hover, #main-nav a.active {
-    background-color: #3498db;
+    background-color: var(--primary-color);
 }
 
 /* Main content styles */
@@ -57,7 +70,7 @@ main {
 #hero {
     text-align: center;
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    background-color: var(--background-light);
     margin-bottom: 2rem;
     border-radius: 8px;
 }
@@ -74,18 +87,19 @@ main {
 }
 
 button {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
 }
 
 #features {
@@ -105,20 +119,26 @@ button:hover {
 }
 
 .feature-card {
-    background-color: #f8f9fa;
+    background-color: var(--background-light);
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .feature-card h4 {
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 /* Contact page styles */
 #contact-form {
-    background-color: #f8f9fa;
+    background-color: var(--background-light);
     padding: 2rem;
     border-radius: 8px;
     margin-bottom: 2rem;
@@ -146,6 +166,13 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
 }
 
 #contact-info {
@@ -160,14 +187,20 @@ button:hover {
 }
 
 .info-card {
-    background-color: #f8f9fa;
+    background-color: var(--background-light);
     padding: 1.5rem;
     border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer styles */
 footer {
-    background-color: #2c3e50;
+    background-color: var(--secondary-color);
     color: white;
     text-align: center;
     padding: 1.5rem 0;
@@ -176,4 +209,52 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    background: var(--accent-success);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(120%);
+    transition: transform 0.4s ease-out, opacity 0.4s;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+    opacity: 0;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.hide {
+    transform: translateX(120%);
+    opacity: 0;
+}
+
+.notification-success { background: var(--accent-success); }
+.notification-error { background: var(--accent-error); }
+.notification-info { background: var(--accent-info); }
+
+.notification-content {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.notification-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 0 0 10px;
 }

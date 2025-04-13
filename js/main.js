@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', initApplication);
 
-// Notification System
 const NotificationSystem = {
-    show: function (message, type = 'success', duration = 3000) {
+    show(message, type = 'success', duration = 3000) {
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         notification.setAttribute('role', 'alert');
@@ -26,79 +25,35 @@ const NotificationSystem = {
             setTimeout(() => this.dismiss(notification), duration);
         }
     },
-    dismiss: function (notification) {
+
+    dismiss(notification) {
         notification.classList.remove('show');
         notification.classList.add('hide');
         notification.addEventListener('transitionend', () => {
             notification.remove();
-        });
+        }, { once: true });
     }
 };
 
-// Main initialization
 function initApplication() {
     setCopyrightYear();
     initializePageSpecificFeatures();
     injectNotificationCSS();
 }
 
-// Inject notification styles dynamically
 function injectNotificationCSS() {
+    if (document.getElementById('dynamic-notification-styles')) return;
+
     const css = `
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 4px;
-            color: white;
-            background: #4CAF50;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transform: translateX(120%);
-            transition: transform 0.3s ease-out;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            max-width: 350px;
-        }
-        .notification.show {
-            transform: translateX(0);
-        }
-        .notification.hide {
-            transform: translateX(120%);
-        }
-        .notification-success { background: #4CAF50; }
-        .notification-error { background: #F44336; }
-        .notification-info { background: #2196F3; }
-        .notification-content {
-            flex: 1;
-            padding-right: 10px;
-        }
-        .notification-close {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            line-height: 1;
-            padding: 0 0 0 10px;
-        }
+        .notification { /* kept minimal, handled in style.css */ }
     `;
     const style = document.createElement('style');
     style.type = 'text/css';
+    style.id = 'dynamic-notification-styles';
     style.appendChild(document.createTextNode(css));
     document.head.appendChild(style);
 }
 
-// Footer year
-function setCopyrightYear() {
-    const yearElement = document.getElementById('current-year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-}
-
-// Initialize based on page
 function initializePageSpecificFeatures() {
     if (document.getElementById('features-container')) {
         initializeHomePage();
@@ -107,7 +62,6 @@ function initializePageSpecificFeatures() {
     }
 }
 
-// Initialize Home Page (features)
 function initializeHomePage() {
     const features = [
         {
@@ -130,23 +84,22 @@ function initializeHomePage() {
     setupCtaButton();
 }
 
-// Render feature cards
 function renderFeatureCards(features) {
     const featuresContainer = document.getElementById('features-container');
     if (!featuresContainer) return;
-    features.forEach(feature => {
+
+    features.forEach(({ title, description, icon }) => {
         const featureElement = document.createElement('div');
         featureElement.className = 'feature-card';
         featureElement.innerHTML = `
-            <div class="feature-icon">${feature.icon}</div>
-            <h4>${feature.title}</h4>
-            <p>${feature.description}</p>
+            <div class="feature-icon">${icon}</div>
+            <h4>${title}</h4>
+            <p>${description}</p>
         `;
         featuresContainer.appendChild(featureElement);
     });
 }
 
-// Setup CTA button
 function setupCtaButton() {
     const ctaButton = document.getElementById('cta-button');
     if (ctaButton) {
@@ -160,21 +113,49 @@ function setupCtaButton() {
     }
 }
 
-// Initialize Contact Page (form)
 function initializeContactPage() {
     setupContactForm();
+    injectContactInfo();
 }
 
-// Setup Contact Form (notification only)
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', () => {
+        contactForm.addEventListener('submit', (e) => {
             NotificationSystem.show(
                 'Thank you! Your message is being sent...',
                 'info',
                 3000
             );
         });
+    }
+}
+
+function injectContactInfo() {
+    const infoContainer = document.getElementById('info-container');
+    if (!infoContainer) return;
+
+    const infos = [
+        { icon: "📞", label: "Phone", value: "+1-234-567-890" },
+        { icon: "📧", label: "Email", value: "support@dsmobiles.com" },
+        { icon: "🏢", label: "Address", value: "123 Mobile Street, Tech City, USA" }
+    ];
+
+    infos.forEach(({ icon, label, value }) => {
+        const infoCard = document.createElement('div');
+        infoCard.className = 'info-card';
+        infoCard.innerHTML = `
+            <div class="info-icon">${icon}</div>
+            <h4>${label}</h4>
+            <p>${value}</p>
+        `;
+        infoContainer.appendChild(infoCard);
+    });
+}
+
+function setCopyrightYear() {
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 }

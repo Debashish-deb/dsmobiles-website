@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - DSMobiles</title>
+    <meta name="description" content="Contact DSMobiles for premium mobile solutions and expert support.">
+    <meta name="keywords" content="Contact DSMobiles, Mobile Support, Mobile Services">
+    <meta name="author" content="DSMobiles">
+    <meta property="og:title" content="Contact DSMobiles - Premium Mobile Solutions">
+    <meta property="og:description" content="Get in touch with DSMobiles for expert mobile solutions and support.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dsmobiles.com/contact.html">
+    <meta property="og:image" content="https://dsmobiles.com/images/og-contact.jpg">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Contact Us - DSMobiles</title>
 </head>
 <body>
-    <header>
+    <header role="banner">
         <div class="container">
             <h1 id="company-name">DSMobiles</h1>
-            <nav id="main-nav">
+            <nav id="main-nav" aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
@@ -19,11 +28,9 @@
         </div>
     </header>
 
-    <main class="container">
-        <section id="contact-form">
-            <h2>Get in Touch</h2>
-
-            <!-- Only one correct Formspree form -->
+    <main class="container" role="main">
+        <section id="contact-form" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Get in Touch</h2>
             <form
               id="contactForm"
               action="https://formspree.io/f/xwplyrkj"
@@ -31,41 +38,36 @@
             >
                 <div class="form-group">
                     <label for="name">Your Name:</label>
-                    <input type="text" name="name" id="name" required>
+                    <input type="text" name="name" id="name" required aria-required="true">
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email:</label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email" required aria-required="true">
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message:</label>
-                    <textarea name="message" id="message" rows="5" required></textarea>
+                    <textarea name="message" id="message" rows="5" required aria-required="true"></textarea>
                 </div>
 
-                <!-- Hidden fields -->
                 <input type="hidden" name="_subject" value="New Contact Form Submission from DSMobiles">
-                <!-- (Optional redirect after submission) -->
-                <!-- <input type="hidden" name="_redirect" value="https://dsmobiles.com/thankyou.html"> -->
-
-                <button type="submit">Send Message</button>
+                <button type="submit" aria-label="Send your message">Send Message</button>
             </form>
-
         </section>
 
-        <section id="contact-info">
-            <h3>Our Contact Information</h3>
+        <section id="contact-info" aria-labelledby="contact-info-heading">
+            <h3 id="contact-info-heading">Our Contact Information</h3>
             <div id="info-container">
-                <!-- Contact info will be added by JavaScript -->
+                <!-- Contact info will be dynamically injected -->
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; <span id="current-year"></span> DSMobiles. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
