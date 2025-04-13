@@ -67,24 +67,38 @@ function initializePageSpecificFeatures() {
 function initializeHomePage() {
     const features = [
         {
-            title: "Latest Devices",
-            description: "We offer the newest mobile devices from top brands at competitive prices.",
+            title: "Frontend Development",
+            description: "Modern, responsive web interfaces with a focus on user experience and performance.",
+            icon: "💻"
+        },
+        {
+            title: "Backend Development",
+            description: "Robust server-side solutions to power your websites and applications securely and efficiently.",
+            icon: "🛠️"
+        },
+        {
+            title: "Android Development",
+            description: "Custom Android applications tailored to your business needs.",
             icon: "📱"
-        },
-        {
-            title: "Expert Support",
-            description: "Our team of mobile experts is always ready to assist you with any questions.",
-            icon: "👨‍💼"
-        },
-        {
-            title: "Quality Guarantee",
-            description: "All our products come with a comprehensive warranty and quality guarantee.",
-            icon: "✅"
         }
     ];
     renderFeatureCards(features);
     setupCtaButton();
 }
+
+function setupCtaButton() {
+    const ctaButton = document.getElementById('cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', () => {
+            NotificationSystem.show(
+                'Thank you for your interest in DreamSd! Let\'s build your next project together.',
+                'info',
+                5000
+            );
+        });
+    }
+}
+
 
 function renderFeatureCards(features) {
     const featuresContainer = document.getElementById('features-container');
@@ -102,18 +116,6 @@ function renderFeatureCards(features) {
     });
 }
 
-function setupCtaButton() {
-    const ctaButton = document.getElementById('cta-button');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', () => {
-            NotificationSystem.show(
-                'Thank you for your interest in DSMobiles! Our full product catalog will be available soon.',
-                'info',
-                5000
-            );
-        });
-    }
-}
 
 function initializeContactPage() {
     setupContactForm();
