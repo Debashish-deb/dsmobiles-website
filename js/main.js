@@ -36,9 +36,11 @@ const NotificationSystem = {
 };
 
 function initApplication() {
+    applySavedDarkMode();
     setCopyrightYear();
     initializePageSpecificFeatures();
     injectNotificationCSS();
+    setupDarkModeToggle();
 }
 
 function injectNotificationCSS() {
@@ -115,42 +117,57 @@ function setupCtaButton() {
 
 function initializeContactPage() {
     setupContactForm();
-    injectContactInfo();
 }
 
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
             NotificationSystem.show(
                 'Thank you! Your message is being sent...',
                 'info',
-                3000
+                2000
             );
+            setTimeout(() => {
+                window.location.href = 'thankyou.html';
+            }, 2000);
         });
     }
 }
 
-function injectContactInfo() {
-    const infoContainer = document.getElementById('info-container');
-    if (!infoContainer) return;
+function setupDarkModeToggle() {
+    const toggleButton = document.createElement('button');
+    toggleButton.textContent = 'Toggle Dark Mode';
+    toggleButton.setAttribute('aria-label', 'Toggle dark mode');
+    toggleButton.style.position = 'fixed';
+    toggleButton.style.bottom = '20px';
+    toggleButton.style.right = '20px';
+    toggleButton.style.padding = '10px 15px';
+    toggleButton.style.backgroundColor = '#333';
+    toggleButton.style.color = '#fff';
+    toggleButton.style.border = 'none';
+    toggleButton.style.borderRadius = '5px';
+    toggleButton.style.cursor = 'pointer';
+    toggleButton.style.zIndex = '1001';
 
-    const infos = [
-        { icon: "📞", label: "Phone", value: "+1-234-567-890" },
-        { icon: "📧", label: "Email", value: "support@dsmobiles.com" },
-        { icon: "🏢", label: "Address", value: "123 Mobile Street, Tech City, USA" }
-    ];
+    document.body.appendChild(toggleButton);
 
-    infos.forEach(({ icon, label, value }) => {
-        const infoCard = document.createElement('div');
-        infoCard.className = 'info-card';
-        infoCard.innerHTML = `
-            <div class="info-icon">${icon}</div>
-            <h4>${label}</h4>
-            <p>${value}</p>
-        `;
-        infoContainer.appendChild(infoCard);
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
     });
+}
+
+function applySavedDarkMode() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
 }
 
 function setCopyrightYear() {
