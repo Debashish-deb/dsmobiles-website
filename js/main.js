@@ -62,7 +62,7 @@ function setupContactPage() {
     const contactInfo = [
         {
             title: "Email",
-            content: "info@dsmobiles.com"
+            content: '<a href="mailto:customerservice@dsmobiles.com">customerservice@dsmobiles.com</a>'
         },
         {
             title: "Phone",
